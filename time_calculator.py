@@ -1,10 +1,9 @@
-def add_time(start, duration, *day):
+def add_time(start, duration, day=False):
     new_time = ''
     final_hours = ''
     final_minutes = ''
     final_meridiem = ''
     final_day = ''
-    day_of_week = ''
     day_references = ''
     days_of_week = [
         "Monday",
@@ -19,15 +18,10 @@ def add_time(start, duration, *day):
     # Getting initial hours and minutes
     initial_time, meridiem = start.split()
     meridiem.upper()
-    initial_time.split(':')
-    initial_hour = int(initial_time[0])
-    initial_minutes = int(initial_time[1])
-    
+    initial_hour, initial_minutes = list(map(int, initial_time.split(':')))
     # Getting initial hours and minutes
-    duration_time = duration.split(':')
-    duration_hour = int(duration_time[0])
-    duration_minutes = int(duration_time[1])
 
+    duration_hour, duration_minutes = list(map(int, duration.split(':')))
     # Change to military time
     if meridiem == 'PM':
         initial_hour += 12
@@ -48,7 +42,8 @@ def add_time(start, duration, *day):
         
         if final_day == 1:
             day_references = '(next day)'
-        day_references = f'({final_day} days later)'
+        else:
+            day_references = f'({final_day} days later)'
     
     # Checking AM PM
     if final_hours == 0:
@@ -63,12 +58,6 @@ def add_time(start, duration, *day):
     
     # Formating minutes
     final_minutes = str(final_minutes).zfill(2)
-
-
-
-
-
-
 
 
     return new_time
