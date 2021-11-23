@@ -22,6 +22,12 @@ def add_time(start, duration, *day):
     initial_time.split(':')
     initial_hour = int(initial_time[0])
     initial_minutes = int(initial_time[1])
+    
+    # Getting initial hours and minutes
+    duration_time = duration.split(':')
+    duration_hour = int(duration_time[0])
+    duration_minutes = int(duration_time[1])
+
 
 
 
