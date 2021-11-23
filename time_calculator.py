@@ -71,6 +71,18 @@ def add_time(start, duration, day=False):
             print('DEBUG: ', final_day, 'type is:', type(final_day))
             new_day = final_day % 7
             # if day isn't changed
-           
+            if new_day == 0:
+                if day_references == '':
+                    new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day}'
+                else:
+                    new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day} {day_references}'
+            # if day is changed
+            else:
+                day = days_of_week[(day_index + new_day) % 7]
+                if day_references == '':
+                    new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day}'
+                else:
+                    new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day} {day_references}'
+
 
     return new_time
