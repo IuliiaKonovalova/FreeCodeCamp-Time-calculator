@@ -68,7 +68,6 @@ def add_time(start, duration, day=False):
             # Match the day to the index in the list
             day_index = days_of_week.index(day)
             # Getting the day of the week
-            print('DEBUG: ', final_day, 'type is:', type(final_day))
             new_day = final_day % 7
             # if day isn't changed
             if new_day == 0:
