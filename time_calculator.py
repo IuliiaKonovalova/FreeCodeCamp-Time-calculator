@@ -16,6 +16,14 @@ def add_time(start, duration, *day):
         "Sunday"
     ]
 
+    # Getting initial hours and minutes
+    initial_time, meridiem = start.split()
+    meridiem.upper()
+    initial_time.split(':')
+    initial_hour = int(initial_time[0])
+    initial_minutes = int(initial_time[1])
+
+
 
 
 
