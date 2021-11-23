@@ -60,4 +60,17 @@ def add_time(start, duration, day=False):
     final_minutes = str(final_minutes).zfill(2)
 
 
+    # Check whether day of the week was given
+    if day and final_day:
+        day = day.lower().capitalize()
+        #  Check whether the spelling is correct
+        if day in days_of_week:
+            # Match the day to the index in the list
+            day_index = days_of_week.index(day)
+            # Getting the day of the week
+            print('DEBUG: ', final_day, 'type is:', type(final_day))
+            new_day = final_day % 7
+            # if day isn't changed
+           
+
     return new_time
