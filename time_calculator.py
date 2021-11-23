@@ -60,7 +60,7 @@ def add_time(start, duration, day=False):
     final_minutes = str(final_minutes).zfill(2)
 
 
-    # Check whether day of the week was given
+    # Check whether day of the week was given and final_day was assigned 
     if day and final_day:
         day = day.lower().capitalize()
         #  Check whether the spelling is correct
@@ -83,6 +83,20 @@ def add_time(start, duration, day=False):
                     new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day}'
                 else:
                     new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day} {day_references}'
-
+    # Check whether only day of the week was given
+    elif day:
+        day = day.lower().capitalize()
+        if day in days_of_week:
+            day_index = days_of_week.index(day)
+            if day_references == '':
+                    new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day}'
+            else:
+                new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}, {day} {day_references}'
+    #  Otherwise just use hours, minutes, AM/PM, +/- day references
+    else:
+        if day_references == '':
+            new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()}'
+        else:
+            new_time = f'{final_hours}:{final_minutes} {final_meridiem.strip()} {day_references}'
 
     return new_time
