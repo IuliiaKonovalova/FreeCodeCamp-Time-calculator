@@ -53,7 +53,7 @@ def add_time(start, duration, *day):
     # Checking AM PM
     if final_hours == 0:
         final_meridiem = 'AM'
-        final_hour = 12
+        final_hours = 12
     elif final_hours >= 12:
         final_meridiem = 'PM'
         if final_hours > 12:
@@ -61,7 +61,8 @@ def add_time(start, duration, *day):
     else:
         final_meridiem = 'AM'
     
-
+    # Formating minutes
+    final_minutes = str(final_minutes).zfill(2)
 
 
 
