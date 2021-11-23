@@ -44,10 +44,25 @@ def add_time(start, duration, *day):
     # Checking hours
     if final_hours > 24:
         final_day = final_hours // 24
-        final_meridiem = 'AM'
+        final_hours = final_hours % 24
+        
         if final_day == 1:
             day_references = '(next day)'
         day_references = f'({final_day} days later)'
+    
+    # Checking AM PM
+    if final_hours == 0:
+        final_meridiem = 'AM'
+        final_hour = 12
+    elif final_hours >= 12:
+        final_meridiem = 'PM'
+        if final_hours > 12:
+            final_hours -= 12
+    else:
+        final_meridiem = 'AM'
+    
+
+
 
 
 
